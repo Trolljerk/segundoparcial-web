@@ -11,31 +11,31 @@ import com.edu.ufps.entity.Manga;
 @RestController
 @RequestMapping("/mangas")
 public class MangaController {
-	@Autowired
-	private MangaService mangaService;
+    @Autowired
+    private MangaService mangaService;
 
-	@GetMapping
-	public List<Manga> getAllMangas() {
-		return mangaService.findAll();
-	}
+    @GetMapping
+    public List<Manga> getAllMangas() {
+        return mangaService.findAll();
+    }
 
-	@GetMapping("/{id}")
-	public Manga getMangaById(@PathVariable Long id) throws Exception {
-		return mangaService.findById(id);
-	}
+    @GetMapping("/{id}")
+    public Manga getMangaById(@PathVariable Long id) {
+        return mangaService.findById(id);
+    }
 
-	@PostMapping
-	public Manga createManga(@RequestBody Manga manga) throws BadRequestException {
-		return mangaService.create(manga);
-	}
+    @PostMapping
+    public Manga createManga(@RequestBody Manga manga) {
+        return mangaService.create(manga);
+    }
 
-	@PutMapping("/{id}")
-	public Manga updateManga(@PathVariable Long id, @RequestBody Manga manga) throws Exception {
-		return mangaService.update(id, manga);
-	}
+    @PutMapping("/{id}")
+    public Manga updateManga(@PathVariable Long id, @RequestBody Manga manga) {
+        return mangaService.update(id, manga);
+    }
 
-	@DeleteMapping("/{id}")
-	public void deleteManga(@PathVariable Long id) throws Exception {
-		mangaService.delete(id);
-	}
+    @DeleteMapping("/{id}")
+    public void deleteManga(@PathVariable Long id) {
+        mangaService.delete(id);
+    }
 }
