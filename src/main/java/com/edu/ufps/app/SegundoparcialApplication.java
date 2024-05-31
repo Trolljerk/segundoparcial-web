@@ -1,4 +1,4 @@
-package com.edu.ufps;
+package com.edu.ufps.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,5 +9,4 @@ public class SegundoparcialApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SegundoparcialApplication.class, args);
 	}
-
 }
