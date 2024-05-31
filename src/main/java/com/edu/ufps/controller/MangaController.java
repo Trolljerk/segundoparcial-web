@@ -2,7 +2,6 @@ package com.edu.ufps.controller;
 
 import java.util.List;
 
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.edu.ufps.service.*;

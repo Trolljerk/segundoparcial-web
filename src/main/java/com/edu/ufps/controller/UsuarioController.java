@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.edu.ufps.service.*;
 import com.edu.ufps.repository.*;
 import com.edu.ufps.entity.*;
 import com.edu.ufps.exception.*;
@@ -32,7 +31,7 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/{username}/favoritos")
-	public List<Manga> addFavorito(@PathVariable String username, @RequestBody Long mangaId) {
+	public List<Manga> addFavorito(@PathVariable String username, @RequestBody Long mangaId) throws BadRequestException {
 		Usuario usuario = usuarioRepository.findByUsername(username)
 				.orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
 		Manga manga = mangaRepository.findById(mangaId)
@@ -47,15 +46,15 @@ public class UsuarioController {
 		return getFavoritos(username);
 	}
 
-	@DeleteMapping("/{username}/favoritos/{mangaId}")
-	public List<Manga> removeFavorito(@PathVariable String username, @PathVariable Long mangaId) {
-		Usuario usuario = usuarioRepository.findByUsername(username)
-				.orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
-		Manga manga = mangaRepository.findById(mangaId)
-				.orElseThrow(() -> new ResourceNotFoundException("Manga no encontrado"));
-		Favorito favorito = favoritoRepository.findByUsuarioAndManga(usuario, manga)
-				.orElseThrow(() -> new ResourceNotFoundException("Favorito no encontrado"));
-		favoritoRepository.delete(favorito);
-		return getFavoritos(username);
-	}
+    @DeleteMapping("/{username}/favoritos/{mangaId}")
+    public List<Manga> removeFavorito(@PathVariable String username, @PathVariable Long mangaId) {
+        Usuario usuario = usuarioRepository.findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
+        Manga manga = mangaRepository.findById(mangaId)
+                .orElseThrow(() -> new ResourceNotFoundException("Manga no encontrado"));
+        Favorito favorito = favoritoRepository.findByUsuarioAndManga(usuario, manga)
+                .orElseThrow(() -> new ResourceNotFoundException("Favorito no encontrado"));
+        favoritoRepository.delete(favorito);
+        return getFavoritos(username);
+    }
 }

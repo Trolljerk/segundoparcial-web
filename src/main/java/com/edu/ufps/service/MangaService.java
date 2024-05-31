@@ -2,12 +2,12 @@ package com.edu.ufps.service;
 
 import java.util.List;
 
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.edu.ufps.repository.*;
 import com.edu.ufps.entity.*;
+import com.edu.ufps.exception.*;
 
 @Service
 public class MangaService {
@@ -51,4 +51,3 @@ public class MangaService {
     }
 }
 
-}
