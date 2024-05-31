@@ -1,6 +1,9 @@
 package com.edu.ufps.entity;
 
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,10 +27,12 @@ public class Manga {
 
 	private boolean pelicula;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "pais_id")
 	private Pais pais;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "tipo_id")
 	private Tipo tipo;
